@@ -81,7 +81,7 @@ public class UserService {
     {
         try {
             String url = "http://localhost:"+Port+"/api/admin/edit/gender";
-            Map<String,String> gender = Map.of("id",id,"name",name);
+            Map<String,String> gender = Map.of("docId",id,"name",name);
             RestTemplate restTemplate = new RestTemplate();
             HttpHeaders headers = new HttpHeaders();
             headers.set("Content-Type","application/json");
@@ -103,7 +103,7 @@ public class UserService {
     {
         try {
             String url = "http://localhost:"+Port+"/api/admin/edit/level";
-            Map<String,String> level = Map.of("id",id,"name",name);
+            Map<String,String> level = Map.of("docId",id,"name",name);
             RestTemplate restTemplate = new RestTemplate();
             HttpHeaders headers = new HttpHeaders();
             headers.set("Content-Type","application/json");
@@ -124,7 +124,7 @@ public class UserService {
     {
         try {
             String url = "http://localhost:"+Port+"/api/admin/edit/occupation";
-            Map<String,String> occupation = Map.of("id",id,"name",name);
+            Map<String,String> occupation = Map.of("docId",id,"name",name);
             RestTemplate restTemplate = new RestTemplate();
             HttpHeaders headers = new HttpHeaders();
             headers.set("Content-Type","application/json");
