@@ -12,13 +12,13 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">Edit Gender</h1>
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Edit Level</h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <form th:action="@{/user/level/edit}" method="post">
           <div class="modal-body">
             <input type="text" hidden="hidden" th:value="${id}" name="id">
-            <label th:for="${id}" class="form-label">Gender name:</label>
+            <label th:for="${id}" class="form-label">Level name:</label>
             <input type="text" placeholder="Enter gender name please" name="value" class="form-control" th:id="${id}">
           </div>
           <div class="modal-footer">
