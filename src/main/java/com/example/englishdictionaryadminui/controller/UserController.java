@@ -88,7 +88,7 @@ public class UserController {
             return "error/404";
         }
     }
-    @GetMapping("/user/gender/delete/{id}")
+    @GetMapping("/gender/delete/{id}")
     public String deleteGenderById(
             @PathVariable("id") String id
     )
@@ -128,7 +128,7 @@ public class UserController {
             return "error/404";
         }
     }
-    @GetMapping("/user/level/delete/{id}")
+    @GetMapping("/level/delete/{id}")
     public String deleteLevelById(
             @PathVariable("id") String id
     )
@@ -169,7 +169,7 @@ public class UserController {
             return "error/404";
         }
     }
-    @GetMapping("/user/occupation/delete/{id}")
+    @GetMapping("/occupation/delete/{id}")
     public String deleteOccupationById(
             @PathVariable("id") String id
     )
