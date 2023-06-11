@@ -19,8 +19,14 @@ public class WordlistController {
     public String getDefaultWordlist(
             Model model
     ) {
-        model.addAttribute("wordlists", wordlistService.getAllWordlist().getBody());
-        return "wordlist/wordlists";
+        if( wordlistService.getAllWordlist().getStatusCode().is2xxSuccessful())
+        {
+            model.addAttribute("wordlists", wordlistService.getAllWordlist().getBody());
+            return "wordlist/wordlists";
+        }
+        else {
+            return "error/500";
+        }
     }
 
     @GetMapping("/detail/{wordlistId}")
@@ -28,9 +34,14 @@ public class WordlistController {
             Model model,
             @PathVariable("wordlistId") String wordlistId
     ) {
-        System.out.println(wordlistId);
-        model.addAttribute("wordlist", wordlistService.getWordlistById("default", wordlistId).getBody());
-        return "wordlist/wordlistDetail";
+        if(wordlistService.getWordlistById("default", wordlistId).getStatusCode().is2xxSuccessful())
+        {
+            model.addAttribute("wordlist", wordlistService.getWordlistById("default", wordlistId).getBody());
+            return "wordlist/wordlistDetail";
+        }
+        else {
+            return "error/500";
+        }
     }
     @PostMapping("/rename")
     public String renameWordlist(

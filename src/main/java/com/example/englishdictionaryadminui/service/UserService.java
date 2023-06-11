@@ -19,43 +19,84 @@ public class UserService {
     private final String Port = "4040";
     public ResponseEntity<Map<String,String >> getAllGender()
     {
-        WebClient webClient = WebClient.create("http://localhost:"+Port+"/api/user/gender");
-        Map<String,String> gender = webClient.get()
-                .retrieve()
-                .toEntity(Map.class)
-                .block()
-                .getBody();
-        return ResponseEntity.ok(gender);
+        try {
+            WebClient webClient = WebClient.create("http://localhost:"+Port+"/api/user/gender");
+            Map<String,String> gender = webClient.get()
+                    .retrieve()
+                    .toEntity(Map.class)
+                    .block()
+                    .getBody();
+            return ResponseEntity.ok(gender);
+        }
+        catch (WebClientException e)
+        {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
+        catch (WebServerException e)
+        {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
     }
     public ResponseEntity<Map<String,String >> getAllLevel()
     {
-        WebClient webClient = WebClient.create("http://localhost:"+Port+"/api/user/level");
-        Map<String,String> level = webClient.get()
-                .retrieve()
-                .toEntity(Map.class)
-                .block()
-                .getBody();
-        return ResponseEntity.ok(level);
+        try {
+            WebClient webClient = WebClient.create("http://localhost:"+Port+"/api/user/level");
+            Map<String,String> level = webClient.get()
+                    .retrieve()
+                    .toEntity(Map.class)
+                    .block()
+                    .getBody();
+            return ResponseEntity.ok(level);
+        }
+        catch (WebClientException e)
+        {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
+        catch (WebServerException e)
+        {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
     }
     public ResponseEntity<Map<String,String >> getAllOccupation()
     {
-        WebClient webClient = WebClient.create("http://localhost:"+Port+"/api/user/occupation");
-        Map<String,String> occupation = webClient.get()
-                .retrieve()
-                .toEntity(Map.class)
-                .block()
-                .getBody();
-        return ResponseEntity.ok(occupation);
+        try{
+            WebClient webClient = WebClient.create("http://localhost:"+Port+"/api/user/occupation");
+            Map<String,String> occupation = webClient.get()
+                    .retrieve()
+                    .toEntity(Map.class)
+                    .block()
+                    .getBody();
+            return ResponseEntity.ok(occupation);
+        }
+        catch (WebClientException e)
+        {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
+        catch (WebServerException e)
+        {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
     }
     public ResponseEntity<List<User>> getAllUser()
     {
-        WebClient webClient = WebClient.create("http://localhost:"+Port+"/api/admin/get/all/user");
-        List<User> users = webClient.get()
-                .retrieve()
-                .toEntityList(User.class)
-                .block()
-                .getBody();
-        return ResponseEntity.ok(users);
+        try {
+            WebClient webClient = WebClient.create("http://localhost:"+Port+"/api/admin/get/all/user");
+            List<User> users = webClient.get()
+                    .retrieve()
+                    .toEntityList(User.class)
+                    .block()
+                    .getBody();
+            return ResponseEntity.ok(users);
+        }
+        catch (WebClientException e)
+        {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
+        catch (WebServerException e)
+        {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
+
     }
     public ResponseEntity<User> getUserById(String id)
     {
